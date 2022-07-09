@@ -1,26 +1,22 @@
 package com.springboot.jpa.service.impl;
 
+import com.springboot.jpa.data.dao.ProductDAO;
 import com.springboot.jpa.data.dto.ProductDto;
 import com.springboot.jpa.data.dto.ProductResponseDto;
 import com.springboot.jpa.data.entity.Product;
-import com.springboot.jpa.data.repository.ProductRepository;
 import com.springboot.jpa.service.ProductService;
 import java.time.LocalDateTime;
-import java.util.logging.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ProductServiceImpl implements ProductService {
-    private final Logger LOGGER = LoggerFactory.getLogger(ProductServiceImpl.class);
-    private final ProductRepository productRepository;
+    private final ProductDAO productDAO;
 
     @Autowired
-    public ProductServiceImpl(ProductRepository productRepository) {
-        this.productRepository = productRepository;
+    public ProductServiceImpl(ProductDAO productDAO) {
+        this.productDAO = productDAO;
     }
-
 
     @Override
     public ProductResponseDto getProduct(Long number) {
